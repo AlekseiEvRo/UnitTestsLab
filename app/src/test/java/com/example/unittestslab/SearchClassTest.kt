@@ -7,7 +7,7 @@ class SearchClassTest {
 
     private val searchClass = SearchClass()
     @Test
-    fun getSearchUrl_isCorrect() {
+    fun getSearchUrl_isNullable() {
         val nullResult = searchClass.getSearchUrl(null)
 
         if (nullResult == null){
@@ -15,6 +15,18 @@ class SearchClassTest {
         }
         else{
             throw AssertionError("Result was not null")
+        }
+    }
+
+    @Test
+    fun getSearchUrl_isCorrect() {
+        val nullResult = searchClass.getSearchUrl("toaster")
+
+        if (nullResult != null){
+            print("Success\n")
+        }
+        else{
+            throw AssertionError("Result was null")
         }
     }
 }
