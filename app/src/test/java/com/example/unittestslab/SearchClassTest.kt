@@ -20,13 +20,29 @@ class SearchClassTest {
 
     @Test
     fun getSearchUrl_isCorrect() {
-        val nullResult = searchClass.getSearchUrl("toaster")
+        val result = searchClass.getSearchUrl("toaster")
 
-        if (nullResult != null){
+        if (result != null){
             print("Success\n")
         }
         else{
             throw AssertionError("Result was null")
+        }
+    }
+
+    @Test
+    fun getSearchUrl_hasQuery(){
+
+        val searchPhrase = "toaster"
+        val correctQuery = "https://www.google.com/seacrh?q=${searchPhrase}/"
+
+        val result = searchClass.getSearchUrl(searchPhrase)
+
+        if (result == correctQuery){
+            print("Success\n")
+        }
+        else{
+            throw AssertionError("Result doesn't contains input phrase")
         }
     }
 }
